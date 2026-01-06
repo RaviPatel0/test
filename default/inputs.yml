@@ -1,0 +1,10 @@
+inputs:
+  test_data:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    samples:
+      - eventsPerSec: 100
+        sample: apache_common
+    type: datagen

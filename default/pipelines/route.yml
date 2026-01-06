@@ -1,0 +1,15 @@
+id: default
+groups: {}
+comments: []
+routes:
+  - id: POVt0y
+    name: send_aws_s3
+    final: true
+    disabled: false
+    pipeline: datagen_to_s3
+    description: ""
+    enableOutputExpression: false
+    outputExpression: null
+    filter: __inputId=='datagen:test_data'
+    clones: []
+    output: cribl-test

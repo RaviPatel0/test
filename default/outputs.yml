@@ -1,0 +1,43 @@
+outputs:
+  cribl-test:
+    systemFields:
+      - cribl_pipe
+    streamtags: []
+    awsAuthenticationMethod: manual
+    signatureVersion: v4
+    reuseConnections: true
+    rejectUnauthorized: true
+    enableAssumeRole: false
+    durationSeconds: 3600
+    stagePath: $CRIBL_HOME/state/outputs/staging
+    addIdToStagePath: true
+    destPath: ""
+    objectACL: private
+    removeEmptyDirs: true
+    partitionExpr: "C.Time.strftime(_time ? _time : Date.now()/1000, '%Y/%m/%d')"
+    format: raw
+    baseFileName: "`CriblOut`"
+    fileNameSuffix: '`.${C.env["CRIBL_WORKER_ID"]}.${__format}${__compression ===
+      "gzip" ? ".gz" : ""}`'
+    maxFileSizeMB: 32
+    maxOpenFiles: 100
+    headerLine: ""
+    writeHighWaterMark: 64
+    onBackpressure: block
+    deadletterEnabled: false
+    onDiskFullBackpressure: block
+    forceCloseOnShutdown: false
+    maxFileOpenTimeSec: 300
+    maxFileIdleTimeSec: 30
+    maxConcurrentFileParts: 4
+    verifyPermissions: true
+    maxClosingFilesToBackpressure: 100
+    compress: gzip
+    compressionLevel: best_speed
+    emptyDirCleanupSec: 300
+    directoryBatchSize: 1000
+    type: s3
+    bucket: "'ravi-test-cribl'"
+    awsApiKey: "'AKIA2UC273GTWLHGEP2R'"
+    awsSecretKey: changeme
+    region: ap-south-1
